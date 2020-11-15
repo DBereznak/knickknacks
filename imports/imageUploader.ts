@@ -38,7 +38,7 @@ class ImageUploader {
         <label for="grayscale">GrayScale</label>
         <input type="range" min="0" max="100" value="0" id="grayscale">
         <label for="contrast">Contrast</label>
-        <input type="range" min="0" max="100" value="0" id="contrast">
+        <input type="range" min="0" max="100" value="100" id="contrast">
         `;
         filterContainer.classList.add('filter-container');
         filterContainer.innerHTML = filters;
@@ -47,18 +47,21 @@ class ImageUploader {
         blur.addEventListener("change", this.updateCSSFilters);
         const grayscale = document.getElementById("grayscale");
         grayscale.addEventListener("change", this.updateCSSFilters);
+        const contrast = document.getElementById("contrast");
+        contrast.addEventListener("change", this.updateCSSFilters);
     }
 
-    updateCSSFilters(){
-        
+    updateCSSFilters(){      
         const image = document.getElementById("output");
         let blurValue = document.getElementById("blur") as HTMLInputElement;
         let grayscaleValue = document.getElementById("grayscale") as HTMLInputElement;
-        console.log(blurValue);
-            image.style.filter = `
-            blur(${blurValue.value}px);
-            grayscale(${grayscaleValue.value}%);
-            `;        
+        let contrastValue = document.getElementById("contrast") as HTMLInputElement;
+        console.log(blurValue.value + " : " + grayscaleValue.value + " : " + contrastValue.value);
+        image.style.filter = `
+            blur(${blurValue.value}px)
+            grayscale(${grayscaleValue.value}%)
+            contrast(${contrastValue.value}%)
+        `;        
     }
 }
 
