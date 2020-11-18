@@ -10,6 +10,11 @@ body{
     }
 
     #main{
+
+        canvas{
+            display: none;
+            visibility: hidden;
+        }
         .uploader{
             button.disabled{
                 opacity: 50%;
