@@ -10,17 +10,22 @@ body{
     }
 
     #main{
-
-        canvas{
-            display: none;
-            visibility: hidden;
-        }
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
         .uploader{
+         width: 80%;
+         max-width: 1400px;
             button.disabled{
                 opacity: 50%;
                 cursor: not-allowed;
                 pointer-events: none;
             }        
+        }
+
+        canvas{
+            display: none;
+            visibility: hidden;
         }
     }
 }

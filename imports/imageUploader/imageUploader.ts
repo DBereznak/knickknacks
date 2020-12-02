@@ -13,7 +13,7 @@ class ImageUploader {
         const uploaderForm: string = `
         <p><label for="file">Image</label></p>
         <p><input type="file" id="file" accept="image/*" name="image"></p><br/>
-        <img id="output" width="600"><br/>
+        <img id="output"><br/>
         <a class="disabled" id="saveImage" download>Save Image</a>`;
         imageUploaderContainer.classList.add('uploader');
         imageUploaderContainer.innerHTML = uploaderForm;
@@ -95,8 +95,8 @@ class ImageUploader {
         let tempImage = {
             imageSource:  document.getElementById("output") as HTMLImageElement
         }
-        canvas.width = 600;
-        canvas.height = 600;
+        canvas.width = tempImage.imageSource.width;
+        canvas.height = tempImage.imageSource.height;
         const ctx = canvas.getContext("2d");
         ctx.filter = tempImage['imageSource'].style.filter;
         console.log(tempImage['imageSource'].style.filter); //delete eventually
