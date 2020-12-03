@@ -1,10 +1,10 @@
 import './style.scss';
-import  {ImageUploader} from "./imports/imageUploader/imageUploader";
+//import  {ImageUploader} from "./imports/imageUploader/imageUploader";
 import {Snake} from "./imports/Snake/Snake"
 
 
-const imageUploader = new ImageUploader("main");
+//const imageUploader = new ImageUploader("main");
 const snakeGame = new Snake("main");
 
-imageUploader.createImageUploader();
+//imageUploader.createImageUploader();
 snakeGame.createGame();

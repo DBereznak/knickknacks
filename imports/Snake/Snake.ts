@@ -1,5 +1,5 @@
 import * as Phaser from 'phaser';
-
+import MainScene from './MainScene'
 
 
 class Snake {
@@ -12,6 +12,12 @@ class Snake {
         type: Phaser.AUTO,
         parent: 'snake',
         backgroundColor: '#4e2b7f',
+        physics: {
+            default: 'arcade',
+            arcade: {
+                debug: true
+            }
+        },
         scene: [MainScene]
        }
        
@@ -30,16 +36,5 @@ class Snake {
     }
 }
 
-class MainScene extends Phaser.Scene{
-    constructor(){
-        super("MainScene")
-    }
-
-    create(){}
-
-    update(time){
-        console.log("update")
-    }
-}
 
 export {Snake}
