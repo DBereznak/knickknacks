@@ -2,7 +2,7 @@ import * as Phaser from 'phaser';
 
 export default class PlayerSnake{
 
-    Scene: Phaser.Scene
+    Scene: Phaser.Scene;
     Direction: Phaser.Math.Vector2;
     body = [];
 
@@ -11,7 +11,8 @@ export default class PlayerSnake{
         this.Scene = scene;
         this.Direction = Phaser.Math.Vector2.RIGHT;
         this.body = [];
-        this.body.push(this.Scene.add.rectangle(400, 300, 16, 16, 0x19af11).setOrigin(0));
+        this.body.push(this.Scene.add.rectangle(16, 16, 16, 16, 0x19af11).setOrigin(0));
+        this.body.push(this.Scene.add.rectangle(0, 0, 16, 16, 0x19af11).setOrigin(0));
         this.Scene.input.keyboard.on('keydown', e => {
             this.keydown(e);
         })
