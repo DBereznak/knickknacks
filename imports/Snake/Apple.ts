@@ -1,12 +1,13 @@
 import * as Phaser from "phaser"; 
 
-export default class Apple{
+export default class Apple extends Phaser.GameObjects.GameObject{
 
     Scene: Phaser.Scene;
     apple: any;
-    randomX: number; // board width
-    randomY: number; // board height
+    randomX: number; // in bounds of board width
+    randomY: number; // in bounds of board height
     constructor(scene: Phaser.Scene){
+        super(scene, "Scene")
         this.Scene = scene;
         this.randomX = this.getRandom(800);
         this.randomY = this.getRandom(600);
