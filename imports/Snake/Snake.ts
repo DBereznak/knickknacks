@@ -7,8 +7,8 @@ class Snake {
     hostDiv: string;
     gameConfig: Phaser.Types.Core.GameConfig = {
         title: 'Typescript Phaser Snake',
-        width: 800,
-        height: 600,
+        width: 400,
+        height: 400,
         type: Phaser.AUTO,
         parent: 'snake',
         backgroundColor: '#4e2b7f',
