@@ -11,7 +11,7 @@ class Snake {
         height: 400,
         type: Phaser.AUTO,
         parent: 'snake',
-        backgroundColor: '#4e2b7f',
+        backgroundColor: '#6add5d',
         physics: {
             default: 'arcade',
             arcade: {

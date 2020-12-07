@@ -9,13 +9,15 @@ export default class MainScene extends Phaser.Scene{
     lastMoveTime: number;
     moveInterVal: number;
     score: number;
+    scoreBoard: Phaser.GameObjects.Text;
 
-    constructor(Player: PlayerSnake, Apple: Apple){
+    constructor(Player: PlayerSnake, Apple: Apple, ScoreBoard: Phaser.GameObjects.Text){
         super("MainScene");
         this.player = Player;
         this.apple = Apple;
         this.lastMoveTime = 0;
         this.score = 0;
+        this.scoreBoard = ScoreBoard;
         this.moveInterVal = 500; //snake velocity
     }
 
@@ -24,6 +26,7 @@ export default class MainScene extends Phaser.Scene{
     create(){
         this.player = new PlayerSnake(this);
         this.apple = new Apple(this);
+        this.scoreBoard = this.add.text(325, 2, 'Score: ' + this.score, { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif', fill: "#fff" });
     }
     
 
@@ -33,12 +36,23 @@ export default class MainScene extends Phaser.Scene{
         this.move();
        }
 
+       // death by hitting bounds
        if((this.player.snakeBody[0].y  < 0 || this.player.snakeBody[0].y > 400) ||
        (this.player.snakeBody[0].x  < 0 || this.player.snakeBody[0].x > 400)) {
-        this.player.snakeBody[0].y = 16;
-        this.player.snakeBody[0].x = 16;
+            this.moveInterVal = 500;
+            this.score = 0;
+            this.scene.restart();
        }
 
+       // death by eating tail
+       let tail = this.player.snakeBody.slice(1);
+
+       if(tail.some(s => s.x === this.player.snakeBody[0].x &&
+        s.y === this.player.snakeBody[0].y)){
+            this.moveInterVal = 500;
+            this.score = 0;
+            this.scene.restart();
+        }
     }
 
     move(){
@@ -48,6 +62,7 @@ export default class MainScene extends Phaser.Scene{
         if(this.apple.apple.x === x && this.apple.apple.y === y){
            this.player.eatFood();
            this.score++;
+           this.scoreBoard.text = 'Score: ' + this.score;
            console.log("Score: " + this.score);
            this.apple.newApple();
            this.moveInterVal = this.moveInterVal - 25;
